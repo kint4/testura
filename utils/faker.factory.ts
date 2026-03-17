@@ -47,11 +47,3 @@ export class UserFactory {
     };
   }
 }
-
-const searchKeywords = ['dress', 'top', 'jeans', 'tshirt', 'saree', 'skirt', 'blouse'];
-
-export class ProductFactory {
-  static searchTerm(): string {
-    return searchKeywords[Math.floor(Math.random() * searchKeywords.length)];
-  }
-}

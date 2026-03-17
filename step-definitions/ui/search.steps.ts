@@ -26,4 +26,6 @@ Then('all results should be related to {string}', async function (this: CustomWo
   const results = await productPage.getSearchResults();
   const { expect } = await import('@playwright/test');
   expect(results.length).toBeGreaterThan(0);
+  const allMatch = results.every(name => name.toLowerCase().includes(keyword.toLowerCase()));
+  expect(allMatch, `Expected all results to contain "${keyword}" but got: ${results.join(', ')}`).toBe(true);
 });

@@ -36,7 +36,4 @@ export class ProductPage {
     }
   }
 
-  async navigateToCart(): Promise<void> {
-    await this.page.goto('/view_cart');
-  }
 }
