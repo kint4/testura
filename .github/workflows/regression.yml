@@ -49,7 +49,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: reports/allure-report
-          destination_dir: regression/${{ github.run_number }}
+          destination_dir: regression/latest
 
       - name: Upload Allure results as artifact
         if: always()

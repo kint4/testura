@@ -52,7 +52,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: reports/allure-report
-          destination_dir: smoke/${{ github.run_number }}
+          destination_dir: smoke/latest
 
       - name: Upload Allure results on failure
         if: failure()
