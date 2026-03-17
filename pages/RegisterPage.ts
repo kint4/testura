@@ -55,9 +55,11 @@ export class RegisterPage {
 
   async submitRegistration(): Promise<void> {
     await this.page.click(this.createAccountButton);
+    await this.page.waitForLoadState('networkidle');
   }
 
   async isRegistrationSuccessful(): Promise<boolean> {
+    await this.page.waitForSelector(this.successHeader, { timeout: 15000 });
     return this.page.locator(this.successHeader).isVisible();
   }
 }
