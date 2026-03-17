@@ -8,7 +8,7 @@ module.exports = {
     requireModule: ['ts-node/register'],
     format: [
       'progress-bar',
-      'allure-cucumberjs/reporter',
+      './node_modules/allure-cucumberjs/dist/cjs/reporter.js',
     ],
     paths: ['features/**/*.feature'],
     timeout: 30000,

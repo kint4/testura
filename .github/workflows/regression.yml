@@ -37,7 +37,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Run regression tests
-        run: npm run test:regression -- --format progress
+        run: npm run test:regression
 
       - name: Generate Allure report
         if: always()

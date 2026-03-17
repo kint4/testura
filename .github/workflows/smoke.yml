@@ -40,7 +40,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Run smoke tests
-        run: npm run test:smoke -- --format progress
+        run: npm run test:smoke
 
       - name: Generate Allure report
         if: always()
