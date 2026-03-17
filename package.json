@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test:smoke": "ENV=dev npx cucumber-js --tags \"@smoke\"",
-    "test:regression": "ENV=dev npx cucumber-js --tags \"@regression\"",
+    "test:regression": "ENV=dev npx cucumber-js --tags \"@smoke or @regression\"",
     "test:api": "ENV=dev npx cucumber-js --tags \"@api\"",
     "test:ui": "ENV=dev npx cucumber-js --tags \"@ui\"",
     "report:generate": "allure generate allure-results --clean -o reports/allure-report",
