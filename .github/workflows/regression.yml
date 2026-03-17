@@ -3,6 +3,9 @@ name: Regression Tests
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   regression:
     runs-on: ubuntu-latest
@@ -21,6 +24,12 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Setup Java (required for Allure report)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Install dependencies
         run: npm ci
 
@@ -28,7 +37,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Run regression tests
-        run: npm run test:regression
+        run: npm run test:regression -- --format progress
 
       - name: Generate Allure report
         if: always()
