@@ -31,7 +31,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Run smoke tests
-        run: npm run test:smoke
+        run: npm run test:smoke -- --format progress
 
       - name: Upload Allure results on failure
         if: failure()

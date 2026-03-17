@@ -15,7 +15,7 @@ BeforeAll(async function () {
   const apiCtx = await playwrightRequest.newContext({ baseURL: config.baseUrl });
   const { name, email, password } = users.validUser;
   await apiCtx.delete('/api/deleteAccount', { form: { email, password } }).catch(() => {});
-  await apiCtx.post('/api/createAccount', {
+  const createResponse = await apiCtx.post('/api/createAccount', {
     form: {
       name,
       email,
@@ -34,6 +34,10 @@ BeforeAll(async function () {
       mobile_number: '5551234567',
     },
   });
+  const body = await createResponse.json() as { responseCode?: number; message?: string };
+  if (body.responseCode !== 201) {
+    throw new Error(`BeforeAll: failed to create test user — ${JSON.stringify(body)}`);
+  }
   await apiCtx.dispose();
 });
 
