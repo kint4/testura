@@ -13,6 +13,5 @@ module.exports = {
     paths: ['features/**/*.feature'],
     timeout: 30000,
     retry: 1,
-    publishQuiet: true,
   },
 };
