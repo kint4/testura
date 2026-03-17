@@ -173,3 +173,4 @@ Allure report is published to GitHub Pages after each run.
 @P2          # Priority 2 — major scenarios
 @negative    # Negative / error path scenarios
 ```
+
