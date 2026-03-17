@@ -1,0 +1,9 @@
+{
+  "validSearchKeyword": "dress",
+  "invalidSearchKeyword": "",
+  "knownProduct": {
+    "id": 1,
+    "name": "Blue Top",
+    "brand": "Polo"
+  }
+}

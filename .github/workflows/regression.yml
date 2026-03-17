@@ -1,0 +1,53 @@
+name: Regression Tests
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    env:
+      ENV: dev
+      CI: true
+      HEADLESS: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Run regression tests
+        run: npm run test:regression
+
+      - name: Generate Allure report
+        if: always()
+        run: npm run report:generate
+
+      - name: Deploy Allure report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: reports/allure-report
+          destination_dir: regression/${{ github.run_number }}
+
+      - name: Upload Allure results as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-regression
+          path: allure-results/
+          retention-days: 30

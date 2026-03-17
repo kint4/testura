@@ -1,0 +1,27 @@
+{
+  "name": "testura",
+  "version": "1.0.0",
+  "description": "E2E test automation framework — Playwright + Cucumber.js + TypeScript",
+  "private": true,
+  "scripts": {
+    "test:smoke": "ENV=dev npx cucumber-js --tags \"@smoke\"",
+    "test:regression": "ENV=dev npx cucumber-js --tags \"@regression\"",
+    "test:api": "ENV=dev npx cucumber-js --tags \"@api\"",
+    "test:ui": "ENV=dev npx cucumber-js --tags \"@ui\"",
+    "report:generate": "allure generate allure-results --clean -o reports/allure-report",
+    "report:open": "allure open reports/allure-report",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "@faker-js/faker": "^8.4.1",
+    "@playwright/test": "^1.43.0",
+    "@types/node": "^20.12.7",
+    "allure-commandline": "^2.29.0",
+    "allure-cucumberjs": "^3.6.0",
+    "allure-js-commons": "^3.6.0",
+    "playwright": "^1.43.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
