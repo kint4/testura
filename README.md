@@ -156,9 +156,9 @@ const user = fixtures.users.validUser;      // static — reusable
 | Workflow | Trigger | Tags |
 |---|---|---|
 | `smoke.yml` | Push to `main` / Pull Request | `@smoke` |
-| `regression.yml` | Nightly at 02:00 UTC | `@regression` |
+| `regression.yml` | Manual (`workflow_dispatch`) | `@smoke or @regression` |
 
-Allure report is published to GitHub Pages after each regression run.
+Allure report is published to GitHub Pages after each run.
 
 ---
 
@@ -166,7 +166,7 @@ Allure report is published to GitHub Pages after each regression run.
 
 ```gherkin
 @smoke       # Critical path — runs on every push
-@regression  # Full suite — runs nightly
+@regression  # Full suite — triggered manually
 @api         # API layer tests
 @ui          # UI layer tests
 @P1          # Priority 1 — blocker scenarios
