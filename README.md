@@ -1,5 +1,7 @@
 # Testura
 
+![Smoke Tests](https://github.com/kint4/testura/actions/workflows/smoke.yml/badge.svg)
+
 End-to-end test automation framework built with **Playwright**, **Cucumber.js (BDD)**, and **TypeScript**. Covers both API and UI testing against [automationexercise.com](https://automationexercise.com).
 
 ---
